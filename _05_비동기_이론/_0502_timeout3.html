@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset = "UTF-8">
+<title> 함수 </title>
+<script>
+    function setClock() {
+        var now = new Date();
+        var s = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        document.getElementById('clock').innerHTML = s;
+        setTimeout(setClock, 1000);
+
+    }
+</script>
+</head>
+<body>
+
+    <div id='clock'></div>
+    <script>
+        setClock();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+    function checkSelection( msg) {
+        var elem = document.getElementById('fruits');
+        if (elem.value == 0) {
+            alert(msg);
+            elem.focus();
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+</head>
+<body>
+<form>
+과일선택 <select id="fruits">
+<option value="0">선택하세요</option>
+<option value="1">사과</option>
+<option value="2">배</option>
+<option value="3">바나나</option>
+</select>
+<input type='button' 
+	onclick="checkSelection( '하나를 선택하여야 합니다.')"
+	value='확인' />
+</form>
+</body>
+</html>

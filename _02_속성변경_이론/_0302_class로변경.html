@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByClassName()</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <p>getElementsByClassName() 메서드1</p>
+    </div>
+    <div class="content">
+        <p>getElementsByClassName() 메서드2</p>
+    </div>
+
+    <script>
+        let collection = document.getElementsByClassName("content")[1];
+        // 배경 색상 변경
+        collection.style.backgroundColor = "red";
+    </script>
+
+</body>
+</html>

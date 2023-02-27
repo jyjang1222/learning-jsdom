@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function addtext(t) {
+        // 텍스트 한개 한개 독립적이다.
+        var node = document.createTextNode(t);  
+        document.getElementById("target").appendChild(node);
+    }
+
+    function addtext2(t) {
+        // 텍스트 한개가 하나로 연결되어 있다.
+        document.getElementById("target2").innerHTML += t;
+    }
+</script>
+<body>
+    <div id="target" onclick="addtext('동적으로 텍스트가 추가됩니다.')" 
+	style="font: 20px bold;">여기를 클릭하세요.</div>
+
+    <hr>
+
+    <div id="target2" onclick="addtext2('동적으로 텍스트가 추가됩니다.')" 
+	style="font: 20px bold;">여기를 클릭하세요.</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset = "UTF-8">
+<title> 함수 </title>
+<script>
+	var num = 0;
+	function addNumber(){
+		num += 1;
+		console.log("num: " + num + "<br>");
+	}
+    // setInterval(함수(){}, 밀리세컨드)
+    // 해당 시간간격만큼 해당 함수를 호출함(애니메이션)
+	var auto = setInterval(addNumber, 100);
+
+
+</script>
+</head>
+<body>
+    <h1>일정 시간 간격으로 값 증감시키기</h1>
+    <!-- clearInterval()은 Interval함수를 정지시킴 -->
+	<button onclick="clearInterval(auto)">증가 정지</button>  
+</body>
+</html>

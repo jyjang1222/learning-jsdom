@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        [개념1] JSON.parse()
+            JSON 문자열을 <key>:<value> 관계로 식별해
+            JavaScript 객체로 변환시켜줌
+        [개념2] JSON.stringfy()
+            JavaScript 객체를 JSON 문자열로 변환시켜줌
+    -->
+
+    <h4>학생 명단</h4>
+    <p>이름 : <span id="name"></span></p>
+    <p>나이 : <span id="age"></span></p>
+
+    <script>
+        let text = `[
+            {"name":"Hong", "age":21},
+            {"name":"Kim", "age":22},
+            {"name":"Park", "age":23}
+        ]`;
+        let stList = JSON.parse(text);
+        console.log(stList);
+
+        document.getElementById("name").innerText = stList[1].name;
+        document.getElementById("age").innerText = stList[1].age;
+
+        text = JSON.stringify(stList);
+        console.log(text);
+    </script>   
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var num = 1;
+        var nodeEvent = function(e) {
+            e.target.textContent = num;
+            num += 1;
+        }
+
+        var body = document.body;
+        var table = document.createElement("table");
+        for(var i=0; i<5; i++) {
+            var line = document.createElement("tr");
+
+            for(var j=0; j<5; j++) {
+                var node = document.createElement("td");
+                node.addEventListener("click", nodeEvent);
+                line.append(node);
+            }
+            table.append(line);
+        }
+        body.append(table);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="images/close.jpg" id="cat" value="close" onclick="changeImage()">
+
+    <script>
+        function changeImage() {
+            let cat = document.getElementById("cat");
+            if(cat.value == "close") {
+                document.getElementById("cat").src = "images/open.jpg";
+                cat.value = "open";
+            } else {
+                document.getElementById("cat").src = "images/close.jpg";
+                cat.value = "close";
+            }
+            turn != turn;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onblur</title>
+</head>
+<body>
+    
+    <input type="text" id="myInput">
+
+    <script>
+
+        let element = document.querySelector("#myInput");
+        console.log(element);
+
+        element.addEventListener("focus", focusFunction);
+        element.addEventListener("blur", blurFunction);
+
+        function focusFunction() {
+            element.style.background = "lightgray";
+        }
+        
+        function blurFunction() {
+            element.style.background = "";
+        }
+    </script>
+
+</body>
+</html>

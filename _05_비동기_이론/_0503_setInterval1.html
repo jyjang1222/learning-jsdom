@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        #content {
+            width: 300px;
+            height: 300px;
+            font-size: 100px;
+            text-align: center;     /* 텍스트 가로 가운데 정렬 */
+            line-height: 300px;     /* 텍스트 세로 가운데 정렬 */
+
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--
+        [개념] setInterval() 메서드
+            (1) setInterval(함수명, 시간)
+            (1) 지정된 간격(밀리초)으로 함수를 호출한다.
+            (2) 메서드는 창이 닫힐 때까지 setInterval() 을 계속 호출한다.
+            (3) 1초 = 1000밀리초
+    -->
+
+    <div id="content">
+        0
+    </div>
+
+    <script>
+        let element = document.getElementById("content");
+        let cnt = 0;
+
+        // 익명 함수 구조
+        /*
+        setInterval(function() {
+            cnt++;
+            element.innerHTML = cnt;
+        }, 1000);
+        */
+
+        // 일반 함수 구조
+        function addCnt() {
+            cnt++;
+
+            element.innerHTML = cnt;
+        }
+
+        setInterval(addCnt, 1000);
+    </script>
+    
+</body>
+</html>

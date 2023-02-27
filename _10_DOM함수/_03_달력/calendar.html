@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid black;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function getTable(){
+            var table = document.createElement("table");
+            for(var i = 0; i < 7; i++){
+                var tr = document.createElement("tr");
+                for(var j = 0; j < 7; j++){
+                    var td = document.createElement("td");
+                    tr.append(td);
+                }
+                table.append(tr);
+            }
+            return table;
+        }
+
+        function leftYear(){
+            $year = document.getElementById("year");
+            $month = document.getElementById("month");
+            var year = Number($year.innerHTML) - 1;
+            var month = Number($month.innerHTML) - 1;
+            setCalendar(year , month);
+        }
+        
+        function rightYear(){
+            $year = document.getElementById("year");
+            $month = document.getElementById("month");
+            var year = Number($year.innerHTML) + 1;
+            var month = Number($month.innerHTML) - 1;
+            setCalendar(year , month);
+        }
+
+        function leftMonth(){
+            $year = document.getElementById("year");
+            $month = document.getElementById("month");
+            var year = Number($year.innerHTML);
+            var month = Number($month.innerHTML) - 2;
+            if(month < 0){
+                year -= 1;
+                month = 11;
+            }
+            setCalendar(year , month);
+        }
+
+        function rightMonth(){
+            $year = document.getElementById("year");
+            $month = document.getElementById("month");
+            var year = Number($year.innerHTML);
+            var month = Number($month.innerHTML);
+            if(month > 11){
+                year += 1;
+                month = 0;
+            }
+            setCalendar(year , month);
+        }
+
+        function setCalendar(inputYear, inputMonth){
+            var $calendar = document.getElementById("calendar");
+            if ($calendar.hasChildNodes()){
+                $calendar.removeChild($calendar.firstChild);
+            }
+            var $table = getTable(); 
+            $calendar.append($table);
+            console.log(inputYear , inputMonth);
+
+            var thisyear =  inputYear;
+            var thismonth = inputMonth;
+  
+
+            var $thisyear = document.getElementById("year");
+            $thisyear.innerHTML = thisyear;
+
+            var $thismonth = document.getElementById("month");
+            $thismonth.innerHTML = thismonth + 1;
+   
+            // [윤년계산법]
+            // 1년1월1일은 월요일이다. 
+            // 위 시작날부터  오늘까지 전부 day로 구해서 달력을 만든다. 
+
+            // [1] 작년도 구하기 
+          
+            var lastyear = (thisyear - 1)
+            var total = lastyear * 365;
+            /*
+                [2] 작년까지 윤년추가하기]
+                    (2-1) 400년마다 1추가
+                    (2-2) 100년마다 1감소
+                    (2-3) 4년마다 1증가 
+            */
+            total += parseInt(lastyear / 400);
+            total -= parseInt(lastyear / 100);
+            total += parseInt(lastyear / 4);
+
+             /*
+                [3] 저번달까지 구하기 
+                    [3-1] 올해가 윤년이면 2월달력 변경 
+                    [3-2] 400년이면 윤년
+                    [3-3] 위를 제외한 년도중 100년이아니면서 4년이면 윤년 
+            */
+            var sampleMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+            
+            // 아래 두가지 경우에는 2월은 29일이다.
+            if(thisyear % 400 == 0){
+                sampleMonth = [31,29,31,30,31,30,31,31,30,31,30,31];
+            }else if(thisyear % 100 != 0 && thisyear % 4 == 0){
+                sampleMonth = [31,29,31,30,31,30,31,31,30,31,30,31];
+            }
+            for(var i = 0; i < thismonth; i++){
+                total += sampleMonth[i];
+            }
+           
+            // [3] 이번달 1일을 추가한다.
+            total += 1;
+            console.log(total);
+
+            // 요일 구하기
+            var weekindex = total % 7 ;
+            var week = ["일" , "월" , "화" , "수" , "목" , "금" , "토"]
+            console.log(week[weekindex]);
+            
+            for(var j = 0; j < week.length; j++){
+                $table.children[0].children[j].textContent = week[j];
+            }
+
+            var max = sampleMonth[thismonth];
+            var y = 1;
+            for(var i = 0;i < max; i++){
+                var index = (i + weekindex) % 7;
+                $table.children[y].children[index].textContent = (i + 1);
+                if(index == 6){
+                    y += 1;
+                }
+            }  
+                        
+        }  
+
+
+    </script>
+
+    <div align="center">
+        <h1>달력</h1>
+        <h2><input type="button" value="<" onclick="leftYear()"> <span id="year"></span><span>년</span>  <input type="button" value=">" onclick="rightYear()"></h2>
+        <h2><input type="button" value="<" onclick="leftMonth()"> <span id="month"></span><span>월</span>  <input type="button" value=">" onclick="rightMonth()"></h2>
+        <div id="calendar">
+            
+        </div>
+    </div>
+  
+    <script>
+        var date = new Date(); // 오늘 날짜 구하기
+        setCalendar( date.getFullYear() ,  date.getMonth());
+    </script>
+</body>
+</html>

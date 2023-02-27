@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 숫자 정렬 - sort() 구현하기</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+            [개념] sort() 구현하기
+        */
+
+        let arr = [6, 7, 2, 1, 9, 77];
+
+        // [오름차순 정렬]
+        /*
+        function check(a, b){
+            return a - b;
+        }
+        */
+
+        // [내림차순 정렬]
+        function check(a, b){
+            return b - a;
+        }
+
+        function mySort(arr) {
+            for(let i=0; i<arr.length; i++) {
+                for(let j=i; j<arr.length; j++) {
+                    if(check(arr[i], arr[j]) > 0) {
+                        let temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        }
+
+        mySort(arr);
+        document.write(arr + "<br>");   // 77,9,7,6,2,1
+
+    </script>
+
+</body>
+</html>

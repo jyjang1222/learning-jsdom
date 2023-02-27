@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 문자 정렬 - sort()</title>
+</head>
+<body>
+    
+    <script>
+
+        /*
+            [개념] 배열 문자열 정렬
+                (1) sort() 
+                (2) 문자열의 유니코드 값에 따라 오름차순으로 정렬한다.
+                (3) 내림차순으로 정렬하려면 익명함수로 제공해야한다.
+        */
+
+        let str1 = "a";
+        let str2 = "b";
+
+        // charCodeAt(인덱스) 은 문자열을 아스키 코드로 변환해준다.
+        document.write(str1.charCodeAt(0) + ", " + str2.charCodeAt(0) + "<br>");
+
+        // 문자열을 대소비교할 경우, 아스키코드값으로 변환해 대소비교가 가능하다.
+        document.write((str1 < str2) + "<br>");     // true
+        document.write((str1 > str2) + "<br>");     // false
+
+        let arr = ["미금", "당곡", "정자", "수서", "양재"];
+
+        // [오름차순 정렬]
+        arr.sort();
+        document.write(arr + "<br>");       // 당곡,미금,수서,양재,정자
+        
+        // [내림차순 정렬] 방법(1)
+        arr.sort(function(a, b){
+            if(a > b) return -1;
+            if(a < b) return 1;
+            if(a == b) return 0;
+        });
+
+        // [내림차순 정렬] 방법(2)
+        /*
+        function sortNumber(a, b) {
+            if(a > b) return -1;
+            if(a < b) return 1;
+            if(a == b) return 0;
+        }
+        arr.sort(sortNumber);
+        */
+       
+        document.write(arr + "<br>");       // 정자,양재,수서,미금,당곡
+
+    </script>
+
+</body>
+</html>

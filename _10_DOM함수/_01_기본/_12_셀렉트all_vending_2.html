@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 90px;
+            height: 40px;
+            text-align: center;
+            font-size: 20px;
+            border: 1px solid black;
+        }
+        
+        #center{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <script>
+
+        var RcountList = [0,0,0,0,0,0];
+        var LcountList = [0,0,0,0,0,0];
+
+        var purchaseItem = () => {
+            alert(LcountList);
+            alert(RcountList);
+        }
+        
+
+
+        var LplusClick = (e) =>{
+            var $Lplus = document.querySelectorAll("#Lplus"); // querySelectAll
+            var $Lcount = document.querySelectorAll("#Lcount");
+            for (var i = 0; i < Lplus.length; i++) {
+                var item = Lplus.item(i);             
+                if(e == item){
+                    Lcount[i].textContent = Number(Lcount[i].textContent) + 1; 
+                    LcountList[i] += 1              
+                }
+            }
+        }
+
+        var LminusClick = (e) =>{
+            var sections = document.querySelectorAll("#Lminus");
+            var $Lcount = document.querySelectorAll("#Lcount");
+            for (var i = 0; i < sections.length; i++) {
+                var item = sections.item(i);             
+                if(e == item){           
+                    Lcount[i].textContent = Number(Lcount[i].textContent) - 1; 
+                    LcountList[i] += 1           
+                }
+            }
+        }
+        var RplusClick = (e) =>{
+            var sections = document.querySelectorAll("#Rplus");
+           
+            for (var i = 0; i < sections.length; i++) {
+                var item = sections.item(i);             
+                if(e == item){
+                 
+                }
+            }
+        }
+
+        var RminusClick = (e) =>{
+            var sections = document.querySelectorAll("#Rminus");
+         
+            for (var i = 0; i < sections.length; i++) {
+                var item = sections.item(i);             
+                if(e == item){
+                 
+                }
+            }
+        }
+    </script>
+
+    <div align="center" id="center">
+        <h1>식권 자판기 </h1>
+        
+        <span style="float:left">
+            <table id="Ltable">
+                <tr>
+                    <td colspan="5">관리자</td>            
+                </tr>
+
+                <tr>
+                    <td>오만원권</td>
+                    <td>50000</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일만원권</td>
+                    <td>10000</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>오천원권</td>
+                    <td>5000</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일천원권</td>
+                    <td>5000</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>오백원권</td>
+                    <td>500</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일백원권</td>
+                    <td>100</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>식권가격</td>
+                    <td>3200</td>
+                    <td id="Lcount">0</td>
+                    <td ><div width="100px" onclick="LplusClick(this)" id="Lplus">+</div></td>
+                    <td><div width="100px" onclick="LminusClick(this)" id="Lminus">-</div></td>
+                </tr>
+
+
+
+            </table>
+        </span>
+
+        
+        <span  style="float:right">
+            <table id="Rtable">
+                <tr>
+                    <td colspan="5">사용자</td>             
+                </tr>
+
+                <tr>
+                    <td>오만원권</td>
+                    <td>50000</td>
+                    <td id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일만원권</td>
+                    <td>10000</td>
+                    <td  id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>오천원권</td>
+                    <td>5000</td>
+                    <td  id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일천원권</td>
+                    <td>5000</td>
+                    <td id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>오백원권</td>
+                    <td>500</td>
+                    <td id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+                <tr>
+                    <td>일백원권</td>
+                    <td>100</td>
+                    <td id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+
+
+                <tr>
+                    <td>식권가격</td>
+                    <td>3200</td>
+                    <td id="Rconut">0</td>
+                    <td ><div width="100px" onclick="RplusClick(this)" id="Rplus">+</div></td>
+                    <td><div width="100px" onclick="RminusClick(this)" id="Rminus">-</div></td>
+                </tr>
+            </table>
+        </span>
+
+        <button style="float:right; width:200px; height: 50px; margin-top: 30px;" onclick="purchaseItem()">식권구입</button>
+    </div>
+  
+</body>
+</html>

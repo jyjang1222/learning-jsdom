@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+        [개념] setTimeout() 메서드
+            (1) setTimeout(함수, 밀리초)
+            (2) 밀리초 후에 함수를 호출한다.
+            (3) setInterval()과 달리 한 번만 실행된다.
+    -->
+
+    <div id="msg"></div>
+
+    <script>
+        setTimeout(helloFunction, 5000);
+
+        function helloFunction() {
+            document.getElementById("msg").innerText = "Hello!";
+        }
+    </script>
+
+</body>
+</html>

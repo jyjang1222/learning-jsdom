@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            border: 1px solid black;
+        }
+        .del {
+            float: right;
+        }
+        .del:hover {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    댓글
+    <input type="text" id="reply" placeholder="댓글을 입력해주세요">
+    <button onclick="registReply()">등록</button>
+    
+    <div id="replyList"></div>
+
+    <script>
+
+        function registReply() {
+            // 새로운 요소 생성하기
+            let p = document.createElement("p");
+            let reply = document.querySelector("#reply");
+            // 새로운 텍스트 노드 생성하기
+            let text = document.createTextNode(reply.value);
+            // p노드는 상위 요소가 되고 text 노드는 하위 요소로 구성하기
+            p.appendChild(text);
+            
+            // 삭제 버튼 생성하기
+            let delBtn = document.createElement("span");
+            let delText = document.createTextNode("X");
+            delBtn.setAttribute("class", "del");
+            delBtn.appendChild(delText);
+            p.appendChild(delBtn);
+
+            
+            let replyList = document.querySelector("#replyList");
+            // replyList의 맨 앞에 p노드를 추가하기
+            replyList.insertBefore(p, replyList.childNodes[0]);
+            // replyList.appendChild(p);
+
+            // 삭제 버튼 이벤트처리
+            let delList = document.querySelectorAll(".del");
+            for(let i=0; i<delList.length; i++) {
+                delList[i].addEventListener("click", function() {
+                    // this는 span태그이고
+                    // 그 부모는 p태그이고
+                    // 그 부모는 replyList이다.
+                    if(this.parentNode.parentNode) {
+                        // replyList의 p태그를 삭제함
+                        this.parentNode.parentNode.removeChild(this.parentNode);
+                    }
+                });
+            }
+
+            // input 텍스트 창 초기화하기
+            reply.value = "";
+
+
+
+        }
+
+    </script>
+</body>
+</html>

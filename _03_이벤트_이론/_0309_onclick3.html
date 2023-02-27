@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    function checkLength( min, max) {
+        var elem = document.getElementById('id')
+        var s = elem.value;
+        if (s.length >= min && s.length <= max) {
+            return true;
+        } else {
+            alert(min + " 문자와 " + max + " 문자 사이로 입력해주세요!");
+            elem.focus();
+            return false;
+        }
+    }
+</script>
+</head>
+<body>
+<form>
+    아이디(6-8 문자): <input type='text' id='id' autofocus />
+    <input type='button'
+        onclick="checkLength( 6, 8)"
+        value='확인' />
+</form>
+</body>
+</html>
