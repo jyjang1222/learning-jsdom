@@ -1,0 +1,49 @@
+<script>
+    // 구조 분해 할당
+    // Destructing assignment
+    // 구조 분해 할당 구문은 배열이나 객체의 속성을 분해해서 그 값을 변수에 담을 수 있게 하는 표현식
+
+    // 배열 구조 분해
+    let [x, y] = [1, 2];
+    console.log(x); // 1
+    console.log(y); // 2
+    
+
+    let users = ['Mike', 'Tom', 'Jane'];
+    let [user1, user2, user3] = users;
+    // let user1 = users[0];
+    // let user2 = users[1];
+    // let user3 = users[2];
+
+    let str = "Mike-Tom-Jane";
+    let [user4, user5, user6] = str.split('-');
+    // ['Mike', 'Tom', 'Jane']
+
+    let [a, b, c] = [1, 2]; // c에는 undefined가 들어감
+
+    let [a2=3, b2=4, c2=5] = [1, 2]; // 1, 2, 5
+    console.log(a2); // 1
+    console.log(b2); // 2
+    console.log(c2); // 5
+
+    // 배열 구조 분해: 일부 반환값 무시
+    // 공백과 쉼표를 이용해 필요하지 않은 요소 무시
+    let [user11, , user12] = ['Mike', 'Tom', 'Jane', 'Tony'];
+
+    console.log(user11); // 'Mike'
+    console.log(user12); // 'Tony'
+
+    // 배열 구조 분해: 바꿔치기
+    [a, b] = [b, a];
+
+    // 객체 구조 분해
+    let user = { name: "Mike", age: 30 };
+    let {name, age} = user; 
+
+    // 아래 코드와 같음
+    //let name = user.name;
+    //let age = user.age;
+
+
+
+</script>

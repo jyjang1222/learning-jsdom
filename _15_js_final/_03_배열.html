@@ -1,0 +1,119 @@
+<script>
+    // 배열 메소드
+    /*
+        push() : 뒤에 삽입
+        pop() : 뒤에 삭제
+        unshift() : 앞에 삽입
+        shift() : 앞에 삭제
+    */
+    let users = ['Mike', 'Tom', 'Jane'];
+    users.forEach((item, index, arr) => {
+        // item: Mike, Tom, Jane
+        // index: 0, 1, 2
+        // arr: users
+    });
+
+    let arr = [1, 2, 3, 4, 5, 1, 2, 3];
+    arr.indexOf(3); // 2
+    // 두 번째 인수는 시작 위치 4부터 시작해서 3탐색
+    arr.indexOf(3, 3) // 7
+    // 끝에서부터 탐색하고 싶을 때
+    arr.lastIndexOf(3); // 7
+
+    let arr2 = [1, 2, 3];
+    arr2.includes(2); // true
+    arr2.includes(8); // false
+
+    // arr.find(fn), arr.findIndex(fn)
+    // indexOf처럼 찾는다는 의미는 동일하지만 보다 복잡한 연산이 가능하도록 함수를 연결할 수 있음. 짝수, 성인 찾기 등
+    // 첫 번째 true값만 반환하고 끝남
+
+    let arr3 = [1, 2, 3, 4, 5];
+    const result = arr3.find((item) => {
+        return item % 2 === 0;
+    }); // 리턴 값이 트루일 때 멈추고 해당 요소를 알려줌
+    console.log(result); // 2
+
+    let userList = [
+    { name: "Mike", age: 30 },
+    { name: "Jane", age: 27 },
+    { name: "Tom", age: 10 }
+    ];
+
+    // find는 없으면 undefined를 반환
+    const result2 = userList.find((user) => {
+        if (user.age < 19) {
+            return true;
+        }
+        return false;
+    });
+    console.log(result2); // { name: "Tom", age: 10 }
+
+        // findIndex는 없으면 -1을 반환
+    const result3 = userList.findIndex((user) => {
+    if (user.age < 19) {
+        return true;
+    }
+        return false;
+    });
+    console.log(result3); // 2
+
+
+    // arr.filter(fn) : 만족하는 모든 요소를 배열로 반환
+    // find와 달리 조건을 만족하는 모든 요소를 알고 싶을 때
+    let arr4 = [1, 2, 3, 4, 5 , 6 , 7];
+    const result4 = arr4.filter((item) => {
+        return item % 2 === 0;
+    }); 
+    console.log(result4); // [2, 4, 6]
+
+    // arr.map(fn) : 함수를 받아 특정 기능을 시행하고 새로운 배열을 반환
+    let userList2 = [
+        { name: "Mike", age: 30 },
+        { name: "Jane", age: 27 },
+        { name: "Tom", age: 10 }
+    ];
+    let newUserList = userList2.map((user, index) => {
+        return Object.assign({}, user, {
+            id: index + 1,
+            isAdult: user.age > 19,
+        });
+    });
+    console.log(newUserList);
+    // usreList는 변경된 게 없음
+    console.log(userList);
+
+    // Array.isArray()
+    // 배열인지 아닌지 확인
+    let user = {
+        name: "Mike",
+        age: 30,
+    }
+    let userList3 = ["Mike", "Jane", "Tom"];
+    console.log(typeof user); // object
+    console.log(typeof userList); // object // 타입은 object 지만 배열이다. 
+
+    console.log(Array.isArray(user)); // false
+    console.log(Array.isArray(userList3)); // true
+
+
+    // 실용적인 예제
+    // 성인만 출력
+    let userList5 = [
+        { name: "Mike", age: 30 },
+        { name: "Jane", age: 10 },
+        { name: "Tom", age: 27 },
+        { name: "Sue", age: 42 },
+        { name: "Harry", age: 60 },
+    ];
+
+    let result5 = userList5.reduce((prev, cur) => {
+        if (cur.age > 19) {
+            prev.push(cur.name);
+        }
+        return prev
+    }, [])
+
+    console.log(result5)
+
+</script>

@@ -1,0 +1,36 @@
+<script>
+    /*
+        // resolve 성공한 경우 실행되는 함수
+        // reject는 실패한 경우 실행되는 함수
+        // 어떤 일이 완료된 이후에 실행되는 함수 : callback 함수
+    */
+    const pr = new Promise((resolve, reject) => {
+        
+        setTimeout(() => {
+            let a = Math.floor(Math.random() * 10);
+            console.log(a);
+            let item = "햄버거";
+            if(a % 2 == 0){
+                resolve(item) 
+            }else{
+                reject(item)
+            }
+        }, 1000)
+
+    });
+
+    pr.then(
+        function(result){
+            console.log(result + ' 가지러 가자.');
+        }
+    ).catch(
+        function(result){
+            console.log(result + ' 다시 주문해주세요..');
+        } 
+    ).finally(
+        function() {
+            console.log('---주문 끝---') // finally는 이행이든 거부든 처리가 완료되면 항상 실행
+        }
+    )
+
+</script>

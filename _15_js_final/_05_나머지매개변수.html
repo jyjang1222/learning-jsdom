@@ -1,0 +1,23 @@
+<script>
+        
+    // 나머지 매개변수, 전개 구문
+    function add(...nums){
+        let result = 0;
+        nums.forEach((num) => (result += num));
+        console.log(result);
+    }
+    add(1, 2, 3);
+    add(1, 2, 3, 4, 5, 6);
+
+
+    // 리듀스 사용
+    function add2(...nums){
+        let result = 0;
+        nums.reduce((prev, cur) => prev + cur);
+        console.log(result);
+    }
+    add2(1, 2, 3);
+    add2(1, 2, 3, 4, 5, 6);
+
+
+</script>
